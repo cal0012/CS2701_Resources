@@ -1,44 +1,58 @@
-body{
-    font-family: "Lato", sans-serif;
-    max-width: 75rem;
-    margin: auto;
-    height: 100vh;
+
+/* General page styling */
+* {
+    box-sizing: border-box;
 }
 
-header{
-    background-image:url(SharingFood.jpg);
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 75rem;
+    margin: auto;
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    background-image: url("SharingFood.jpg");
     background-repeat: repeat;
     background-size: contain;
     background-position: center;
-    height:200px;
+    min-height: 200px;
     width: 100%;
     margin: auto;
 }
 
-/**** Menu Style *****************************************/
+/* Navigation styling */
 nav {
     border-bottom: 1px solid black;
 }
 
-ul.navlist{
+ul.navlist {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     background-color: #333;
+
+    display: flex;
+    flex-wrap: wrap;
 }
 
-ul.navlist li
-{
-    float: left;
-    display: inline;
+ul.navlist li {
+    display: block;
 }
 
 ul.navlist li a {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 12px 16px;
+    min-height: 44px;
+
     text-decoration: none;
 }
 
@@ -46,22 +60,28 @@ ul.navlist li a:hover {
     background-color: #111;
 }
 
-/**** Styling for main part */
+/* Visible keyboard focus */
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 3px;
+}
 
+/* Main page layout */
 main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    box-sizing: border-box;
+
     border-bottom: 0.5rem solid;
     width: 100%;
     min-height: 100%;
-    height: auto;
 }
 
-section, aside {
+/* Section and aside styling */
+section,
+aside {
     padding: 0.5rem;
-    box-sizing: border-box;
     min-height: 100%;
 }
 
@@ -72,42 +92,93 @@ aside {
 }
 
 section {
-    min-width: 350px;
-    width: 75%;
+    flex: 1 1 0;
+    min-width: 0;
 }
 
-/*Styling for search in aside*/
-.search{
+/* Search input */
+.search {
     display: block;
-    width: auto;
+    width: 100%;
+    max-width: 100%;
     text-align: left;
 }
 
+/* Registration form and success message */
 .center {
-    margin: auto;
-    width: 50%;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 42rem;
     border: 3px solid green;
-    padding: 10px;
-  }
+    padding: 1rem;
+}
 
-/* Styling for text inputs in the form*/
+/* Form labels */
 .textInput {
     display: block;
     width: auto;
     text-align: left;
+    margin-bottom: 0.25rem;
 }
 
-/*Styling with a media query*/
+/* Form controls */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    max-width: 100%;
+    min-height: 2.75rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: middle;
+}
+
+/* Register button */
+input[type="button"] {
+    min-height: 2.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Keyboard focus for checkboxes and button */
+input[type="checkbox"]:focus-visible,
+input[type="button"]:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 3px;
+}
+
+/* Keep success messages readable */
+#hiddenSection {
+    overflow-wrap: anywhere;
+}
+
+/* Responsive layout */
 @media screen and (max-width: 700px) {
-    main{
+    main {
         flex-direction: column;
     }
-    
-    aside {
-        min-width: 100%;
+
+    aside,
+    section {
+        width: 100%;
+        min-width: 0;
     }
 
-    #hiddenSection{
-        overflow-wrap: break-word;
+    .center {
+        width: 100%;
+    }
+
+    ul.navlist {
+        flex-direction: column;
+    }
+
+    ul.navlist li a {
+        justify-content: flex-start;
     }
 }
